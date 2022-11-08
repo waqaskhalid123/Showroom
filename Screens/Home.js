@@ -57,7 +57,7 @@ const Home=()=>{
       <ScrollView nestedScrollEnabled={false} >
  
       <View style={{backgroundColor:COLORS.white}}>
-      <View >
+      <View style={{marginHorizontal: wp("3%")}}>
       
       <FlatListSlider 
       style={{flex:1,width:100,height:100}}
@@ -66,7 +66,7 @@ const Home=()=>{
       indicatorInActiveColor={'grey'}
       indicatorActiveWidth={30}
       animation
-      height={240}
+      height={300}
       timer={5000}
       onPress={item => {}}
       
@@ -78,21 +78,19 @@ const Home=()=>{
      
       
       <View style={styles.container2}>
-      <View style={{marginVertical:wp("2%"), marginTop:("8%")}}>
+      <View >
         <TouchableOpacity activeOpacity={1} onPress={()=>{navigation.navigate("TopVents")}}>
         <View style={{...styles.imgBck, marginBottom:wp("5%")}}>
       <Image 
-           style={{ height: '100%', width: '100%', overflow: "hidden", 
-           opacity: 0.6, }}
+           style={{ height: '100%', width: '100%', 
+           opacity: 0.6}}
            source={{
              uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLMWzl7hvKunPV0cNCQjHxGqjwGjvByQFyJg&usqp=CAU",
            }}
            resizeMode="stretch"
            />
-         <Text style={{color:"white", top:hp("8%"), left: 0, right: 40, height: 300,
-           textAlign:"center",fontSize:hp("3%"),position:"absolute",  }}>Top</Text>
-           <Text style={{color:"white", top:hp("8%"), left: 50, right: 0, height: 300,
-           textAlign:"center",fontSize:hp("3%"),position:"absolute", textDecorationLine: 'underline' }}>Vents</Text>
+         <Text style={{color:"white",fontFamily:"Poppins-Regular", textAlign:"center",fontSize:hp("3%"),position:"absolute", left:wp("36%") }}>Top</Text>
+           <Text style={{color:"white",fontFamily:"Poppins-Regular",textAlign:"center",fontSize:hp("3%"),position:"absolute", textDecorationLine: 'underline', right:wp("30%") }}>Vents</Text>
            </View>
            </TouchableOpacity>
 
@@ -108,10 +106,8 @@ const Home=()=>{
            resizeMode="stretch"
            />
 
-           <Text style={{color:COLORS.white, fontFamily:"Poppins-Regular",top:hp("8%"), left: 0, right: 40, height: 300,
-           textAlign:"center",fontSize:hp("3%"),position:"absolute",  }}>Our</Text>
-           <Text style={{color:COLORS.white, top:hp("8%"), fontFamily:"Poppins-Regular", left: 90, right: 0, height: 300,
-           textAlign:"center",fontSize:hp("3%"),position:"absolute", textDecorationLine: 'underline' }}>Collection</Text>
+           <Text style={{color:COLORS.white, fontFamily:"Poppins-Regular",textAlign:"center",fontSize:hp("3%"),position:"absolute",left:wp("31%")  }}>Our</Text>
+           <Text style={{color:COLORS.white, fontFamily:"Poppins-Regular", textAlign:"center",fontSize:hp("3%"),position:"absolute", textDecorationLine: 'underline',right:wp("22%") }}>Collection</Text>
           </View>
           </TouchableOpacity>
           </View>
@@ -119,11 +115,9 @@ const Home=()=>{
           <ScrollView horizontal={true} >
       <View style={styles.container3}>
      
-        <View style={{flex:1,flexDirection:"row",marginBottom:-10,marginTop:hp("2%")}}>
-        <Text style={{color:COLORS.primary, left:wp("30%"), right: 0,
-           textAlign:"center",fontSize:hp("3%"),fontFamily:"Poppins-Regular"  }}>Top</Text>
-           <Text style={{color:COLORS.primary,  left:wp("32%"), right: 0,
-           textAlign:"center",fontSize:hp("3%"),fontFamily:"Poppins-Regular", textDecorationLine: 'underline' }}>Catagories</Text>
+        <View style={{flex:1,flexDirection:"row",marginBottom:-10,marginTop:hp("2%") ,justifyContent:"center", alignItems:"center"}}>
+        <Text style={{color:COLORS.primary,left:wp("3%"), textAlign:"center",fontSize:hp("3%"),fontFamily:"Poppins-Regular"  }}>Top</Text>
+           <Text style={{color:COLORS.primary, left:wp("5%"), textAlign:"center",fontSize:hp("3%"),fontFamily:"Poppins-Regular", textDecorationLine: 'underline' }}>Catagories</Text>
         </View>
      
       {/*<View style={{ flex: 1.4, flexdirection: "row", }}>
@@ -189,23 +183,34 @@ const Home=()=>{
 const styles = StyleSheet.create({
    container1:{
     flex:1.2,
-    backgroundColor:"red",
+    
  
    },
    container2:{
     flex:1.6,
-    backgroundColor:COLORS.white
+  
+    marginTop:hp("4%"),
+    marginBottom:hp("2%")
+   // paddingHorizontal:wp("10%"),
+    
    },
    container3:{
     flex:1.8,
     //backgroundColor:"blue"
    },
    imgBck:{
-   // flex: 1,
-    height:hp("20%"),
-    width:wp("100%"),
+    flex: 1,
+    
+    marginHorizontal:wp("3%"),
+    justifyContent:"center",
+    alignItems:"center",
+    height:hp("30%"),
+    width:wp("94%"),
     backgroundColor:"black",
-    position:"relative"
+    //marginRight:wp("-2%")
+    
+   
+  
    },
    flatListItem: {
     flex:1,

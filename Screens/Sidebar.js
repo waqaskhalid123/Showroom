@@ -57,7 +57,7 @@ const Sidebar = ({...props})=>{
         
         <View style={styles.container}>
         
-          <View style={{flex:1,backgroundColor:"black",marginLeft:wp("4%")}}>
+          <View style={{flex:1,backgroundColor:"black", justifyContent:"center", alignItems:"center"}}>
           <Image style={styles.image1}source={require("../assets/logo.png")} />
           </View>
          </View>

@@ -162,7 +162,7 @@ const Cart=()=>{
     <View style={{flex:1 ,padding:wp("3%") }}>
       
     <TouchableOpacity onPress={()=>{{}}}>
-    <View style={{backgroundColor:COLORS.redBtn,borderRadius:hp("0.5%"),height:40 ,justifyContent:"center"}}>
+    <View style={{backgroundColor:COLORS.redBtn,borderRadius:hp("0.5%"),height:hp("6%") ,justifyContent:"center"}}>
      <Text style={{ color:COLORS.white,textAlign:"center",fontFamily:"Poppins-Regular",fontSize:14}}>Checkout</Text>
       </View>
     </TouchableOpacity>

@@ -38,11 +38,8 @@ const TrackOrder=()=>{
 
     return(
       <View style={{flex:1 ,backgroundColor:COLORS.white}}>
-        <View style={{flex:2}}>
+        <View style={{flex:1.3}}>
         <View style={{flex:1,padding:12 ,borderBottomWidth:1, borderBottomColor:"lightgrey"}}>
-        <View style={{marginBottom:("3%")}}>
-        <Text style={{...styles.PrimaryTxt, fontSize:hp("3%")}}>Track your Order</Text>
-        </View>
         <Text style={{...styles.PrimaryTxt, fontSize:hp("2.5%")}}>Order Number</Text>
         <View style={{flexDirection:"row"}}>
             
@@ -51,8 +48,8 @@ const TrackOrder=()=>{
                  </View>
             
             <TouchableOpacity activeOpacity={1} onPress={()=>{setdisplay(!display)}}>
-            <View style={{flex:1, backgroundColor:COLORS.redBtn ,paddingHorizontal:wp("6%") , justifyContent:"center" ,marginHorizontal:wp("2"), borderRadius:5}}>
-            <Text style={{...styles.PrimaryTxt, fontSize:hp("2.5%"), color:COLORS.white}}>Track</Text>
+            <View style={{flex:1, backgroundColor:COLORS.redBtn ,paddingHorizontal:wp("6%")  ,height:hp("6%") , justifyContent:"center" ,marginHorizontal:wp("2"), borderRadius:hp("0.5%")}}>
+            <Text style={{...styles.PrimaryTxt, fontSize:14, color:COLORS.white}}>Track</Text>
             </View>
             </TouchableOpacity>
         </View>
@@ -194,16 +191,15 @@ orderList:{
     paddingVertical:3,
     paddingHorizontal:2, 
     borderRadius:10 ,
-    overflow:'hidden',
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.8,
-    shadowRadius: 2,  
-    elevation: 5,
     borderRightWidth:1,
     borderLeftWidth:1,
     borderRightColor:"lightgrey",
-    borderLeftColor:"lightgrey"
+    borderLeftColor:"lightgrey",
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.5,
+    shadowRadius: 20,  
+    elevation: 2
 },
 contentContainer: {
   paddingVertical: 20

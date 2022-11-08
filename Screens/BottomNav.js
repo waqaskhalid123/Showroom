@@ -80,10 +80,14 @@ const BottomNav = () => {
             tabBarLabel: '',
             headerTitleAlign: "center",
             tabBarIcon: ({ focused, color }) => (
-              <BackArrow name="home-outline" color={focused ? COLORS.redBtn : "gray"} size={20} />
+              <BackArrow name="home-outline" color={focused ? COLORS.redBtn : "gray"} size={25} />
             ),
-
-
+            ///headerStatusBarHeight:hp("1%"),
+            headerTitle:()=>{
+              return  <View style={{width:100/2,height:100/2, paddingVertical:("5%"), justifyContent:"center", alignItems:"center"}}>
+              <Image style={styles.image1}source={require("../assets/logo.png")} />
+              </View>
+             },
             headerShown: true,
             headerLeft: () => (
               <BackArrow name="ios-menu-outline" size={25} onPress={() => { navigation.openDrawer(); }} style={{ paddingLeft: wp("5%") }} />
@@ -104,7 +108,7 @@ const BottomNav = () => {
           options={{
             tabBarLabel: '',
             tabBarIcon: ({ focused, color }) => (
-              <BackArrow name="ios-search-outline" color={focused ? COLORS.redBtn : "gray"} size={20} />
+              <BackArrow name="ios-search-outline" color={focused ? COLORS.redBtn : "gray"} size={25} />
             ),
             headerShown: true,
             headerLeft: () => (
@@ -165,7 +169,7 @@ const BottomNav = () => {
           options={{
             tabBarLabel: '',
             tabBarIcon: ({ focused, color }) => (
-              <BackArrow name="ios-cart-outline" color={focused ? COLORS.redBtn : "gray"} size={20} />
+              <BackArrow name="ios-cart-outline" color={focused ? COLORS.redBtn : "gray"} size={25} />
             ),
             headerShown: true,
             headerTitleAlign: "center",
@@ -189,7 +193,7 @@ const BottomNav = () => {
             tabBarLabel: '',
             tabBarIcon: ({ focused, color }) => (
               // <BackArrow name="ios-person-outline" color={color} size={20} />
-              <BackArrow name="ios-locate-outline" color={focused ? COLORS.redBtn : "gray"} size={20} />
+              <BackArrow name="ios-locate-outline" color={focused ? COLORS.redBtn : "gray"} size={25} />
             ),
             headerShown: true,
             headerLeft: () => (
@@ -226,6 +230,18 @@ const styles = StyleSheet.create({
     //padding:hp("0.5%")
 
 
+  },
+  image1: {
+
+    width: "100%",
+    height: "100%",
+    //borderRadius: hp("100%"),
+    //borderWidth: wp("1%"),
+    backgroundColor: "black",
+    marginVertical: hp("2%"),
+    //paddingleft:wp("10%"),
+    //marginleft:10
+   
   },
 })
 export default BottomNav

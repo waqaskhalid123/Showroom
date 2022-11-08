@@ -95,15 +95,15 @@ orderList:{
     paddingHorizontal:2, 
     borderRadius:10 ,
     overflow:'hidden',
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.8,
-    shadowRadius: 2,  
-    elevation: 5,
     borderRightWidth:1,
     borderLeftWidth:1,
     borderRightColor:"lightgrey",
-    borderLeftColor:"lightgrey"
+    borderLeftColor:"lightgrey",
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.5,
+    shadowRadius: 20,  
+    elevation: 2
 }
 
 })

@@ -54,7 +54,7 @@ const ProductDetail = () => {
   }
 
   function Decrement() {
-    if (value > 0) { setsvalue(value - 1); }
+    if (value > 0, value!=1) { setsvalue(value - 1); }
   }
 
   const DATA = [
@@ -108,7 +108,7 @@ const ProductDetail = () => {
               indicatorInActiveColor={'grey'}
               indicatorActiveWidth={30}
               animation
-              height={240}
+              height={300}
               timer={5000}
 
             />
@@ -168,16 +168,19 @@ const ProductDetail = () => {
               
       
   } />*/}
-
+              <>
+              <View style={{flex:1, marginTop:hp("3%")}}>
+              <Text style={{ color: COLORS.primary, fontFamily: "Poppins-Bold", fontSize: hp("2.5%") }}>Blazer jacket 08</Text>
+              </View>
               <View style={{ flex: 1, flexDirection: "row" }}>
-                <View style={{ flex: 1, justifyContent: "center", marginTop: hp("1%") }}>
-                  <Text style={{ color: COLORS.primary, fontFamily: "Poppins-Regular", fontSize: hp("2.5%") }}>Blazer jacket 08</Text>
+                <View style={{ flex: 1, justifyContent: "center"}}>
+                 {/*} <Text style={{ color: COLORS.primary, fontFamily: "Poppins-Regular", fontSize: hp("2.5%") }}>Blazer jacket 08</Text>*/}
                   <Text style={{ color: COLORS.primary, fontFamily: "Poppins-Bold", fontSize: hp("4%") }}>$ 29.99</Text>
                 </View>
 
-                <View style={{ flex: 1.5, justifyContent: "flex-end", marginBottom: 6 }}>
+                <View style={{ flex: 1.5, marginTop:hp("0.5%"),justifyContent:"flex-start", alignItems:"flex-end" }}>
 
-                  <View style={{ backgroundColor: COLORS.greenbtn, borderRadius: 5 }}>
+                  <View style={{ backgroundColor: COLORS.greenbtn, borderRadius: 5, width:wp("50%")}}>
                     <TouchableOpacity onPress={() => { { } }}>
                       <View style={{ flexDirection: "row", justifyContent: "center", alignItems: "center" }}>
                         <Ionicons name='logo-whatsapp' size={20} color={COLORS.white} style={{ paddingVertical: 7, paddingRight: 8, marginLeft: -2 }} />
@@ -239,14 +242,14 @@ const ProductDetail = () => {
                   </View>
                   <View style={{ borderWidth: 1, marginRight: wp("17%"), borderRadius: 5, borderColor: COLORS.secondary, marginLeft: wp("10%") }}>
 
-                    <View style={{ flexDirection: "row", alignItems: "center", justifyContent:"space-evenly" }}>
-                      <Ionicons name='ios-remove-sharp' size={15} color={COLORS.primary} onPress={() => { Decrement() }}  />
+                    <View style={{ flexDirection: "row", alignItems: "center", justifyContent:"space-evenly",height: hp("5.5%") }}>
+                      <Ionicons name='ios-remove-sharp' size={20} color={COLORS.primary} style={{}} onPress={() => { Decrement() }}  />
                       <Text style={{ fontFamily: "Poppins-Regular", fontSize: 18, }}>{value}</Text>
-                      <Ionicons name='add' size={15} color={COLORS.primary} onPress={() => { Increment() }}  />
+                      <Ionicons name='add' size={20} color={COLORS.primary} onPress={() => { Increment() }}  />
                     </View>
                   </View>
                 </View>
-              </View>
+              </View></>
               <View></View>
             </View>
           </ScrollView>
@@ -301,31 +304,33 @@ const ProductDetail = () => {
         </ScrollView>
 
         <View style={styles.footer}>
-          <View style={{ flex: 1, flexDirection: "row" }}>
+          <View style={{ flex: 1, flexDirection: "row" , alignItems:"center"}}>
             <View style={styles.input1}>
-              <TextInput style={{flex: 1, fontSize:hp("2.5%"),paddingBottom: 6, paddingLeft: 10, color: COLORS.primary }} placeholder='Coupon Code' onChangeText={(val) => { }} />
+              <TextInput style={{flex: 1, fontSize:hp("2.5%"), paddingLeft: 10, color: COLORS.primary }} placeholder='Coupon Code' onChangeText={(val) => { }} />
               <View style={{ marginLeft: wp("3%"), paddingRight: hp("1%") }} >
                 <Myicons name='x' size={20} color={COLORS.secondary} />
               </View>
             </View>
             <View style={{justifyContent:"center",alignItems:"center"}} >
-              <Myicons name='check' size={20} style={styles.checkButton} />
+              <View style={{backgroundColor:COLORS.redBtn, height:hp("6%"),width:wp("12%"), marginLeft:wp("3%"), justifyContent:"center",alignItems:"center",borderRadius: hp("0.5%"),}}>
+              <Myicons color={"white"} name='check' size={20}  />
+              </View>
             </View>
           </View>
           <View style={{ flex: 1, flexDirection: "row" }}>
             <View style={{ flex: 3 }}>
 
-              <Text style={{ color: COLORS.primary, fontFamily: "Poppins-Bold" }}>Total</Text>
+              <Text style={{ color: COLORS.primary }}>Total</Text>
 
               <View style={{ flex: 1, flexDirection: "row" }}>
-                <Text style={{ color: COLORS.primary }}>29.99</Text>
-                <Text style={{ color: COLORS.primary, textDecorationLine: 'line-through', marginLeft: hp("1%"), color: COLORS.primary }}>29.99</Text>
+                <Text style={{ color: COLORS.primary, fontFamily: "Poppins-Bold" }}>29.99</Text>
+                <Text style={{ color: COLORS.primary, fontFamily: "Poppins-Bold", textDecorationLine: 'line-through', marginLeft: hp("1%"), color: COLORS.primary }}>29.99</Text>
               </View>
             </View>
             <View style={{ flex: 1.4 }}>
-              <View style={{ backgroundColor: COLORS.redBtn, height:40, marginBottom: hp("1.5%"), justifyContent: "center", borderRadius: hp("0.5%") }}>
+              <View style={{ backgroundColor: COLORS.redBtn, height:hp("6%"), marginBottom: hp("1.5%"), justifyContent: "center", borderRadius: hp("0.5%") }}>
                 <TouchableOpacity onPress={() => { { } }}>
-                  <Text style={{ color: COLORS.white, textAlign: "center", fontFamily: "Poppins-Regular", fontSize: 12 }}>Add Cart</Text>
+                  <Text style={{ color: COLORS.white, textAlign: "center", fontFamily: "Poppins-Regular", fontSize: 14 }}>Add Cart</Text>
                 </TouchableOpacity>
               </View>
             </View>
@@ -467,15 +472,17 @@ const styles = StyleSheet.create({
   },
   input1: {
     flex: 1,
+    //height:hp("6"),
     flexDirection: "row",
     alignItems: "center",
     borderColor: COLORS.secondary,
     borderWidth: wp("0.3%"),
     borderRadius: hp("0.5%"),
-    marginBottom: hp("1%"),
-    marginTop: hp("1%"),
+    //marginVertical: hp("1%"),
     paddingRight: hp("1%"),
-
+    height:hp("6%"),
+    width:wp("12%")
+    //marginVertical: hp("1.5%"),
 
 
   },
