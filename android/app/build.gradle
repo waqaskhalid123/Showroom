@@ -215,10 +215,10 @@ android {
     
     signingConfigs {
         debug {
-            storeFile file('showroomdepot.keystore')
-            storePassword '12345'
-            keyAlias 'showroomdepot-alias'
-            keyPassword '12345'
+            storeFile file('debug.keystore')
+            storePassword 'android'
+            keyAlias 'androiddebugkey'
+            keyPassword 'android'
         }
           release {
             if (project.hasProperty('MYAPP_UPLOAD_STORE_FILE')) {
