@@ -46,6 +46,8 @@ const TrackOrder=()=>{
         <View style={{flexDirection:"row",borderRadius: hp("0.5%"), borderWidth:1, borderColor:COLORS.secondary ,justifyContent:"center" ,alignItems:"center", color: COLORS.primary}}>        
                  <TextInput style={{ fontSize:hp("2.5%")  , color: COLORS.primary , borderRadius: hp("0.5%"),paddingRight:wp("37%"), paddingVertical:hp("1%")}} placeholder='Order Number' onChangeText={(val) => { }} />
                  </View>
+
+                 
             
             <TouchableOpacity activeOpacity={1} onPress={()=>{setdisplay(!display)}}>
             <View style={{flex:1, backgroundColor:COLORS.redBtn ,paddingHorizontal:wp("6%")  ,height:hp("6%") , justifyContent:"center" ,marginHorizontal:wp("2"), borderRadius:hp("0.5%")}}>
@@ -53,6 +55,7 @@ const TrackOrder=()=>{
             </View>
             </TouchableOpacity>
         </View>
+        
         </View>
         </View>
         <KeyboardAvoidingView

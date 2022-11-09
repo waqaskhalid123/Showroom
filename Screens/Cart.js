@@ -14,7 +14,7 @@ import {
 } from 'react-native';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import { COLORS } from '../Component/Styles';
-import Myicons from "react-native-vector-icons/Ionicons"
+import Myicons from "react-native-vector-icons/Entypo"
 import Ionicons from "react-native-vector-icons/Ionicons"
 
 const Cart=()=>{
@@ -105,12 +105,12 @@ const Cart=()=>{
   } />
     </View> */}
     <View style={styles.container1}>
-    <FlatList
+    {/*<FlatList
   data={data}
   renderItem={({ item }) =>
   <View style={{flex:1,flexDirection:"row",borderBottomWidth:hp("0.1%"), marginTop:hp("1%"), borderBottomColor:"lightgrey" }}>
    <View style={{flex:1,}}>
-   <View style={{flex:1,  height:hp("15%"), width:wp("30%"),padding:wp("3%")}}>
+   <View style={{ height:hp("15%"), width:wp("30%"),padding:wp("3%"), justifyContent:"center", marginTop:hp("2%")}}>
                   <Image
                     style={{ height: '100%', width: '100%' }}
                     source={{
@@ -120,8 +120,8 @@ const Cart=()=>{
                   />
                 </View>
    </View>
-   <View style={{flex:2 ,paddingleft:hp("5%") ,padding:hp("3%") ,marginLeft:hp("4%") }}>
-    <Text style={{color:COLORS.primary, right: 0,textAlign:"left",fontSize:hp("2.5%"),fontFamily:"Poppins-Regular",}}>{item.name}</Text>
+   <View style={{flex:2  ,marginRight:wp("-8%"), paddingVertical:hp("3%") ,marginLeft:hp("4%") }}>
+    <Text style={{color:COLORS.primary,right: 0,textAlign:"left",fontSize:hp("2.5%"),fontFamily:"Poppins-Regular",}}>{item.name}</Text>
     <View style={{flexDirection:"row", marginTop:hp("-1%") , marginBottom:("3%")}}>
     <View style={{flexDirection:"row"}}>
            <Text style={{color:COLORS.secondary, left:wp("0%"), right: 0, 
@@ -136,12 +136,12 @@ const Cart=()=>{
     </View>
     <View style={{borderWidth:1,marginRight:wp("10%"),borderRadius:5,borderColor:"lightgrey", paddingVertical:hp("0.5%") }}>
         
-        <View style={{flexDirection:"row", alignItems:"center",justifyContent:"space-evenly"}}>
-      <Ionicons name='ios-remove-sharp' size={18} color={COLORS.primary} onPress={()=>{Decrement(item.id)}} />
+        <View style={{flexDirection:"row", alignItems:"center",justifyContent:"space-evenly",height:hp("5%")}}>
+      <Myicons name='minus' size={18} color={COLORS.primary} onPress={()=>{Decrement(item.id)}} />
       
-      <Text style={{color:COLORS.primary,fontFamily:"Poppins-Regular",fontSize:hp("2.5%"), }}>{value}</Text>
+      <Text style={{color:COLORS.primary,fontFamily:"Poppins-Regular",fontSize:hp("2.5%") }}>{value}</Text>
     
-      <Ionicons name='add' size={18} color={COLORS.primary} onPress={()=>{Increment()}} />
+      <Myicons name='plus' size={18} color={COLORS.primary} onPress={()=>{Increment()}} />
       </View>
       </View>
     </View>
@@ -157,7 +157,7 @@ const Cart=()=>{
     <View style={{...styles.container2,flexDirection:"row"}}>
       <View style={{flex:2,padding:wp("3%")}}>
     <Text style={{color:COLORS.primary,fontFamily:"Poppins-Regular"}}>Total</Text>
-    <Text style={{color:COLORS.primary,fontFamily:"Poppins-Regular"}}>$29.99</Text>
+    <Text style={{color:COLORS.primary,fontFamily:"Poppins-Bold"}}>$29.99</Text>
     </View>
     <View style={{flex:1 ,padding:wp("3%") }}>
       
@@ -167,8 +167,55 @@ const Cart=()=>{
       </View>
     </TouchableOpacity>
     
-      </View>
+</View>*/}
+ <FlatList
+  data={data}
+  renderItem={({ item }) =>
+  <View style={{flex:1,flexDirection:"row",borderBottomWidth:hp("0.1%"), marginTop:hp("1%"), borderBottomColor:"lightgrey" }}>
+   <View style={{flex:1,justifyContent:"center"}}>
+   <View style={{ height:hp("18%"), width:wp("33%"),padding:wp("3%")}}>
+                  <Image
+                    style={{ height: '100%', width: '100%'}}
+                    source={{
+                      uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwmMhT7ihIcRVh9N6-B4odZV-H6IRQaOLmhw&usqp=CAU",
+                    }}
+                    resizeMode="stretch"
+                  />
+                </View>
+   </View>
+   <View style={{flex:1 ,paddingVertical:hp("2%")  }}>
+    <View >
+    <Text style={{color:COLORS.primary, right: 0,textAlign:"left",fontSize:hp("2.1%"),fontFamily:"Poppins-Regular"}}>{item.name}</Text>
     </View>
+    <View style={{flexDirection:"row", marginTop:hp("1%") , marginBottom:("3%")}}>
+    <View style={{flexDirection:"row"}}>
+           <Text style={{color:COLORS.secondary, left:wp("0%"), right: 0, 
+           textAlign:"center",fontSize:hp("2.2%"),fontFamily:"Poppins-Regular"}}>S</Text>
+           <Text style={{color:COLORS.secondary,  left:0, right: 0,
+           textAlign:"center",fontSize:hp("2.2%"),fontFamily:"Poppins-Regular", textDecorationLine: 'underline' }}>ize</Text>     
+        </View>
+        <View style={{marginLeft:wp("2%")}}>
+        <Text style={{color:COLORS.primary,  left:0, right: 0,
+           textAlign:"center",fontSize:hp("2.2%"),fontFamily:"Poppins-Regular", }}>{item.size}</Text>    
+    </View>
+    </View>
+        <View style={{flexDirection:"row", alignItems:"center",justifyContent:"space-evenly",height: hp("5.5%"), width:wp("35%"),borderRadius:5 ,borderColor:COLORS.secondary, borderWidth:1}}>
+      <Myicons name='minus' size={18} color={COLORS.primary} onPress={()=>{Decrement(item.id)}} />
+      
+      <Text style={{color:COLORS.primary,fontFamily:"Poppins-Regular",fontSize:hp("2.5%") }}>{value}</Text>
+    
+      <Myicons name='plus' size={18} color={COLORS.primary} onPress={()=>{Increment()}} />
+      </View>   
+    </View>
+   <View style={{flex:0.5,paddingVertical:10,padding:wp("3%"),alignItems:"flex-end",backgroundColor:"red" }}>
+   <Ionicons name='close'size={12} color={COLORS.white}  style={{backgroundColor:COLORS.redBtn, borderRadius:20/2,height:20,width:20,  marginBottom:wp("7%") , padding:4 }}/>
+   <View style={{paddingTop:hp("3%")}}>
+   <Text style={{flex:1,fontFamily:"Poppins-Bold", fontSize:hp("2.2%")}}>{item.price}</Text>
+   </View>
+   </View>
+  </View>
+  } />
+</View>
     </View>
     
     

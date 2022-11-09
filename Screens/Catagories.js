@@ -17,12 +17,13 @@ import { Colors } from 'react-native/Libraries/NewAppScreen';
 import { COLORS } from '../Component/Styles';
 import ListComp from '../Component/ListComp';
 import {useNavigation} from "@react-navigation/native"
+import { ColorSpace } from 'react-native-reanimated';
 
 
 const Catagories=()=>{
   const navigation = useNavigation();
   const [dataSource, setDataSource] = useState([]);
-  const [selection, setselection]= useState(true);
+  const [selection, setselection]= useState();
  
   useEffect(() => {
     let items = Array.apply(null, Array(5)).map((v, i) => {
@@ -39,25 +40,63 @@ const Catagories=()=>{
 
   console.log(selection)
 
-  const onPress = () => {
-    setselection(!selection)
+  const onPress = (index) => {
+    setselection(index)
+    setIndexValue(false)
     //navigation.navigate('Root',{name:nemail})
     
   };
 
+  const [indexValue, setIndexValue] = useState(0);
+
+  const data=[
+    { name: 'SHIRT' },
+    { name: 'JEANS'},
+    { name:'PENTS'},
+    { name:'TIE'},
+    { name:'TROUSER'},
+    { name:'BLAZER'},
+    { name:'JACKET'}
+
+  ];
+
     return(
       
-    <View style={{flex:1}}>
+    <View style={{flex:1,backgroundColor:COLORS.white}}>
       <View style={{flex:0.1,backgroundColor:COLORS.white}}>
       <FlatList
         horizontal
         showsHorizontalScrollIndicator={false}
-        data={[{ name: 'SHIRT' },{ name: 'JEANS'},{ name:'PENTS'}]}
-        renderItem={({ item }) =><View>
-       
-        <TouchableOpacity activeOpacity={1} onPress={() => {  setselection(item.name) }}>
-        <Text style={item.name === selection? styles.selectedCatagorytxt : styles.unSelectedCatagorytxt }>{item.name}</Text>
+        data={data}
+        renderItem={({ item,index }) =><View>
+        <View>
+          {/*{item.map((v, i) => (
+            
+            <>
+            {i === indexValue?
+             <Text style={i === indexValue? styles.selectedCatagorytxt : styles.unSelectedCatagorytxt }>{}</Text>
+             :
+             null
+            }
+             <Text style={item.name === selection? styles.selectedCatagorytxt : styles.unSelectedCatagorytxt }>{item.name}</Text>      
+             <Text style={i === indexValue? styles.selectedCatagorytxt : styles.unSelectedCatagorytxt }>{item.name}</Text>
+            <Text>key={index}</Text> 
+            <Text>{console.log(i)}</Text>
+           
+            </>
+            
+          ))}*/}
+        </View>
         
+        <TouchableOpacity  onPress={() => {onPress(index) }}>
+       
+        {index === indexValue?
+         <Text style={selection === 0 || index === indexValue?  styles.selectedCatagorytxt : styles.unSelectedCatagorytxt }>{item.name}</Text>      
+         :
+          <Text style={index === selection?  styles.selectedCatagorytxt : styles.unSelectedCatagorytxt }>{item.name}</Text>            
+        }
+        <View>
+        </View>
         </TouchableOpacity>
         </View>
          } />
@@ -303,7 +342,7 @@ const styles = StyleSheet.create({
     color:COLORS.primary,
     marginRight: wp("6%"),
     marginLeft: wp("3%"),
-    fontFamily:"Poppins-Regular",
+    fontFamily:"Poppins-Bold",
     fontSize:hp("2%"),
     textDecorationLine: 'underline',
    },

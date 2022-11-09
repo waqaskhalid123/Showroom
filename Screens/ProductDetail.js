@@ -18,6 +18,7 @@ import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-nat
 import { COLORS } from '../Component/Styles';
 import Ionicons from "react-native-vector-icons/Ionicons"
 import Myicons from "react-native-vector-icons/Feather"
+import Entypo from "react-native-vector-icons/Entypo"
 import ListComp from '../Component/ListComp';
 import { black } from 'react-native-paper/lib/typescript/styles/themes/v2/colors';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
@@ -243,9 +244,9 @@ const ProductDetail = () => {
                   <View style={{ borderWidth: 1, marginRight: wp("17%"), borderRadius: 5, borderColor: COLORS.secondary, marginLeft: wp("10%") }}>
 
                     <View style={{ flexDirection: "row", alignItems: "center", justifyContent:"space-evenly",height: hp("5.5%") }}>
-                      <Ionicons name='ios-remove-sharp' size={20} color={COLORS.primary} style={{}} onPress={() => { Decrement() }}  />
+                    <Entypo name='minus' size={20} color={COLORS.primary} onPress={()=>{Decrement()}} />
                       <Text style={{ fontFamily: "Poppins-Regular", fontSize: 18, }}>{value}</Text>
-                      <Ionicons name='add' size={20} color={COLORS.primary} onPress={() => { Increment() }}  />
+                      <Entypo name='plus' size={20} color={COLORS.primary} onPress={()=>{Increment()}} />
                     </View>
                   </View>
                 </View>

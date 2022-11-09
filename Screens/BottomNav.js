@@ -116,20 +116,22 @@ const BottomNav = () => {
             ),
             headerTitle: () => {
               return (
-
-
-                <View style={{ flexDirection: "row", borderRadius: hp("0.5%"), borderWidth: 1, borderColor:COLORS.secondary, alignItems: "center", color: COLORS.primary , paddingRight: wp("10%")}}>
-                  <BackArrow name="ios-search-outline" color={COLORS.secondary} size={20} style={{ paddingHorizontal: wp("1%") }} />
-                  <TextInput style={{ fontSize: hp("2.5%"), color: COLORS.primary, borderColor: COLORS.secondary,borderRadius: hp("0.5%"), paddingRight: wp("30%"), paddigleft:-70,paddingVertical: hp("1%")  }} placeholder='Search' onChangeText={(val) => { }} />
-                </View>
+                 
+                
+                <View style={{flexDirection:"row",flex:1,borderRadius: hp("0.5%"), borderWidth:1, borderColor:COLORS.secondary , color: COLORS.primary ,width:wp("70%") , marginVertical:hp("2.5%"), marginLeft:hp("-3.5%")  }}>  
+                 <BackArrow name="ios-search-outline"  size={25}  onPress={() => { }}  style={{marginHorizontal:wp("3%"),marginVertical:hp("1%") ,marginLeft:wp("3%")}}/>      
+                 <TextInput style={{ fontSize:hp("2.5%") , color: COLORS.primary ,marginLeft:wp("-3%"), borderRadius: hp("0.5%"),paddingVertical:hp("1%"), width:wp("55%")}} placeholder='Search' onChangeText={(val) => { }} />
+                 </View>
+                
+                
               )
             },
             headerShown: true,
             headerLeft: () => (
-              <BackArrow name="ios-menu-outline" size={25}  onPress={() => { navigation.openDrawer(); }} style={{ paddingLeft: wp("5%"), marginRight:wp("5%")}} />
+              <BackArrow name="ios-menu-outline"  size={25}  onPress={() => { navigation.openDrawer(); }} style={{ paddingLeft: wp("5%"), marginRight:wp("5%") }} />
             ),
             headerRight: () => (
-              <BackArrow name="options-outline" size={25} onPress={() => { navigation.openDrawer() }} style={{ paddingRight: wp("2.5%") }} />
+              <BackArrow name="options-outline"  size={25} onPress={() => { navigation.openDrawer() }} style={{ paddingRight: wp("5%") }} />
             ),
             headerStyle: {
               height: hp("11%")

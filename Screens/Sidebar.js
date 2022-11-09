@@ -104,11 +104,11 @@ const Sidebar = ({...props})=>{
       <Image  source={require("../assets/facebook.png")} style={{width:"100%",height:"100%"}} resizeMode="contain"/>
     </View>
        <View style={{width:"15%",height:"15%"}} >
-      <Image  source={require("../assets/Insta.png")} style={{width:"100%",height:"100%"}} resizeMode="contain"/>
+      <Image  source={require("../assets/insta.png")} style={{width:"100%",height:"100%"}} resizeMode="contain"/>
     </View>
      
     <View style={{width:"15%",height:"15%"}} >
-      <Image  source={require("../assets/Snapchat.png")} style={{width:"100%",height:"100%"}} resizeMode="contain"/>
+      <Image  source={require("../assets/snapchat.png")} style={{width:"100%",height:"100%"}} resizeMode="contain"/>
     </View>
     </View>
        </View>
