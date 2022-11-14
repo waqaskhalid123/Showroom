@@ -16,15 +16,84 @@ import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-nat
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 import { COLORS } from '../Component/Styles';
 import ListComp from '../Component/ListComp';
-import {useNavigation} from "@react-navigation/native"
-import { ColorSpace } from 'react-native-reanimated';
+import { useNavigation } from "@react-navigation/native"
+import axios from 'axios';
+import { ServerApi } from './Api/Api';
 
 
-const Catagories=()=>{
+const FormData = global.FormData;
+
+const Catagories = ({ route }) => {
+  const { id } = route.params
+  const { catagories } = route.params
+
   const navigation = useNavigation();
   const [dataSource, setDataSource] = useState([]);
-  const [selection, setselection]= useState();
- 
+  const [selection, setselection] = useState(id);
+  const [products, setproducts] = useState([]);
+  const formdata = new FormData();
+
+  formdata.append("category_id", selection)
+
+
+  const postuser = async () => {
+    let headers = {
+      "key": ServerApi.Key,
+      "Content-Type": ServerApi.contentType,
+    }
+    await axios.post(
+      ServerApi.ApiProduct,
+       {category_id:selection} ,
+      {headers}
+      
+    )
+      .then(response =>
+        {//console.log(response.data.data)
+        let pro  =(response.data.data)
+       setproducts(pro)}
+      )
+
+      .catch( error=>console.log(error))
+
+  };
+
+  useEffect(() => {
+    postuser()
+  // console.log("======",products)
+  }, [products])
+
+  //setselection(id)
+  //console.log("catagories id",id)
+  //console.log("catagories data",catagories)
+
+  {/*const formdata = new FormData();
+
+    formdata.append("category_id",selection)
+    
+    
+    const postuser=()=>{
+        axios({
+            method: ServerApi.Method,
+            url: ServerApi.ApiCatagory,
+            data: formdata,    
+            headers:{
+             "key":ServerApi.Key,
+             "Content-Type":ServerApi.contentType,
+            }
+          })
+          .then(function (response) {
+            console.log("response",JSON.stringify(response.data));
+          })
+          .catch(function (error) {
+            console.log(error.response.data);
+          });
+
+    };
+
+    useEffect(()=>{
+      postuser()
+    },[])*/}
+
   useEffect(() => {
     let items = Array.apply(null, Array(5)).map((v, i) => {
       return {
@@ -38,39 +107,41 @@ const Catagories=()=>{
     setDataSource(items);
   }, []);
 
-  console.log(selection)
+  // console.log(selection)
 
   const onPress = (index) => {
     setselection(index)
     setIndexValue(false)
+    console.log("selection", selection)
     //navigation.navigate('Root',{name:nemail})
-    
+
   };
 
-  const [indexValue, setIndexValue] = useState(0);
+  const [indexValue, setIndexValue] = useState(id);
 
-  const data=[
+  const data = [
     { name: 'SHIRT' },
-    { name: 'JEANS'},
-    { name:'PENTS'},
-    { name:'TIE'},
-    { name:'TROUSER'},
-    { name:'BLAZER'},
-    { name:'JACKET'}
+    { name: 'JEANS' },
+    { name: 'PENTS' },
+    { name: 'TIE' },
+    { name: 'TROUSER' },
+    { name: 'BLAZER' },
+    { name: 'JACKET' }
 
   ];
 
-    return(
-      
-    <View style={{flex:1,backgroundColor:COLORS.white}}>
-      <View style={{flex:0.1,backgroundColor:COLORS.white}}>
-      <FlatList
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        data={data}
-        renderItem={({ item,index }) =><View>
-        <View>
-          {/*{item.map((v, i) => (
+  return (
+
+    <View style={{ flex: 1, backgroundColor: COLORS.white }}>
+      <View style={{ flex: 0.1, backgroundColor: COLORS.white }}>
+        <FlatList
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          data={catagories}
+          renderItem={({ item, index }) => <View>
+            <View>
+
+              {/*{item.map((v, i) => (
             
             <>
             {i === indexValue?
@@ -86,9 +157,9 @@ const Catagories=()=>{
             </>
             
           ))}*/}
-        </View>
-        
-        <TouchableOpacity  onPress={() => {onPress(index) }}>
+            </View>
+
+            {/*<TouchableOpacity  onPress={() => {onPress(index) }}>
        
         {index === indexValue?
          <Text style={selection === 0 || index === indexValue?  styles.selectedCatagorytxt : styles.unSelectedCatagorytxt }>{item.name}</Text>      
@@ -97,22 +168,33 @@ const Catagories=()=>{
         }
         <View>
         </View>
-        </TouchableOpacity>
-        </View>
-         } />
+      </TouchableOpacity>*/}
+            <TouchableOpacity onPress={() => { onPress(item.id) }}>
+
+              {id === item.id ?
+                <Text style={id === selection || id === indexValue ? styles.selectedCatagorytxt : styles.unSelectedCatagorytxt}>{item.name}</Text>
+                :
+                <Text style={item.id === selection ? styles.selectedCatagorytxt : styles.unSelectedCatagorytxt}>{item.name}</Text>
+              }
+              <View>
+              </View>
+            </TouchableOpacity>
+          </View>
+          } />
 
       </View>
-      
-   <View style={styles.container3}>
 
-        
-   <FlatList
-          data={dataSource}
+      <View style={styles.container3}>
+
+      <View>
+       <FlatList
+          data={products}
           renderItem={({ item }) => (
             <>
-              
-                <ListComp item={item} />
-              
+             
+                <ListComp name={item.name} price={item.price} imgUri={"https://showroomdepot.fr/app/public/image/product/"+item.product_image[0].image}/>
+                
+                
             </>
 
           )}
@@ -122,29 +204,36 @@ const Catagories=()=>{
           style={{paddingHorizontal:10}}
           columnWrapperStyle={{justifyContent:'space-between'}}
         />
-      
-</View>
+  </View>
 
-    
-{/* add flatlist */}
-     
-       {/*} <View>
-      <FlatList
-  showsHorizontalScrollIndicator={false}
-  data={dataSource}
-  renderItem={({ item }) =>
+        {/*<FlatList
+          data={products}
+          renderItem={({item}) => (
+            <>
+           <Text>{console.log("=>>",item.name)}</Text>
+
+           {/* */}
         
-       
-          
-          <ListComp name={item.name} price={item.price} />
 
+
+
+
+        {/* </>
+
+          )}
+         {/* //Setting the number of column
+          numColumns={2}
+         // keyExtractor={(item, index) => index}
           
-    }
-     
-  />
-  </View>*/}
-  
-   
+        />*/}
+
+      </View>
+
+
+      {/* add flatlist */}
+
+      
+
       {/*<View style={styles.container3}>
       {/*<View style={{ flex: 1.4, flexdirection: "row", }}>
 
@@ -171,7 +260,7 @@ const Catagories=()=>{
 
         </View>*/}
 
-{/*<View >
+      {/*<View >
 
 <FlatList
   horizontal
@@ -231,41 +320,41 @@ const Catagories=()=>{
         keyExtractor={(item, index) => index}
       />
       </View>*/}
-      </View>
-    )
+    </View>
+  )
 }
 
 const styles = StyleSheet.create({
-   container1:{
-    flex:1.2,
-    backgroundColor:"red",
- 
-   },
-   container2:{
-    flex:1.6,
-    backgroundColor:"green"
-   },
-   container3:{
-    flex:1.8,
-    flexDirection:"row",
-    justifyContent:"flex-start",
-    alignItems:"center",
-   
-   },
-   imgBck:{
-   // flex: 1,
-    height:hp("15%"),
-    width:wp("100%"),
-    backgroundColor:"white",
-    position:"relative"
-   },
-   flatListItem: {
-    flex:1,
-    width:wp("44%"),
-    height:hp("20%"),
+  container1: {
+    flex: 1.2,
+    backgroundColor: "red",
+
+  },
+  container2: {
+    flex: 1.6,
+    backgroundColor: "green"
+  },
+  container3: {
+    flex: 1.8,
+    flexDirection: "row",
+    justifyContent: "flex-start",
+    alignItems: "center",
+
+  },
+  imgBck: {
+    // flex: 1,
+    height: hp("15%"),
+    width: wp("100%"),
+    backgroundColor: "white",
+    position: "relative"
+  },
+  flatListItem: {
+    flex: 1,
+    width: wp("44%"),
+    height: hp("20%"),
     //paddingHorizontal:wp("10%"),
-   // marginVertical: hp("10%"),
-    marginTop:hp("3%"),
+    // marginVertical: hp("10%"),
+    marginTop: hp("3%"),
     marginHorizontal: wp("3%"),
     backgroundColor: "white",
     shadowOpacity: 10,
@@ -278,21 +367,21 @@ const styles = StyleSheet.create({
     flex: 1,
     width: "100%",
     height: "100%",
-    borderTopRightRadius:10,
-    borderTopLeftRadius:10
+    borderTopRightRadius: 10,
+    borderTopLeftRadius: 10
   },
 
-  flatItemText:{
-    flexDirection:"row",
-    justifyContent:"space-around",
-    alignItems:"center",
-    backgroundColor:COLORS.white,
-    width:wp("44%"),
-    height:hp("6%"),
-    marginLeft:wp("3%")
+  flatItemText: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    alignItems: "center",
+    backgroundColor: COLORS.white,
+    width: wp("44%"),
+    height: hp("6%"),
+    marginLeft: wp("3%")
   },
   container: {
-    flex:1,
+    flex: 1,
     justifyContent: 'center',
     //backgroundColor: 'uellow',
   },
@@ -302,65 +391,65 @@ const styles = StyleSheet.create({
     height: 100,
     //borderTopRightRadius:10,
     //borderTopLeftRadius:10,
-    flex:1,
-    width:wp("44%"),
-    height:hp("20%"),
+    flex: 1,
+    width: wp("44%"),
+    height: hp("20%"),
     //paddingHorizontal:wp("10%"),
-   // marginVertical: hp("10%"),
-    marginTop:hp("1%"),
+    // marginVertical: hp("10%"),
+    marginTop: hp("1%"),
     marginHorizontal: wp("3%"),
     backgroundColor: "white",
     shadowOpacity: 10,
     shadowColor: "grey",
     shadowRadius: 10,
     elevation: 10,
-    backgroundColor:"blue"
+    backgroundColor: "blue"
   },
   contentContainer: {
     paddingTop: hp("20%"),
-    
+
   },
 
-  flatItemButton:{
-        flex:1,
-        backgroundColor:COLORS.greenbtn,
-        //margiop:wp("3%"),
-       // marginVertical:hp("1.5%"),
-        borderRadius:hp("0.5%"),
-        //paddingLeft:hp("2%"), 
-        paddingVertical:hp("1%"),
-        //marginLeft:wp("2%"),
-        //marginRight:wp("2%"),
-        paddingHorizontal:wp("2%"),
-        marginTop:hp("1.5%"),
-        marginBottom:hp("0.5%")
-  
+  flatItemButton: {
+    flex: 1,
+    backgroundColor: COLORS.greenbtn,
+    //margiop:wp("3%"),
+    // marginVertical:hp("1.5%"),
+    borderRadius: hp("0.5%"),
+    //paddingLeft:hp("2%"), 
+    paddingVertical: hp("1%"),
+    //marginLeft:wp("2%"),
+    //marginRight:wp("2%"),
+    paddingHorizontal: wp("2%"),
+    marginTop: hp("1.5%"),
+    marginBottom: hp("0.5%")
+
   },
-   selectedCatagorytxt:{
-    marginTop:hp("1%"),
-    textAlign:"center", 
-    color:COLORS.primary,
+  selectedCatagorytxt: {
+    marginTop: hp("1%"),
+    textAlign: "center",
+    color: COLORS.primary,
     marginRight: wp("6%"),
     marginLeft: wp("3%"),
-    fontFamily:"Poppins-Bold",
-    fontSize:hp("2%"),
+    fontFamily: "Poppins-Bold",
+    fontSize: hp("2%"),
     textDecorationLine: 'underline',
-   },
+  },
 
-   unSelectedCatagorytxt:{
-    marginTop:hp("1%"),
-    textAlign:"center", 
-    color:COLORS.primary,
+  unSelectedCatagorytxt: {
+    marginTop: hp("1%"),
+    textAlign: "center",
+    color: COLORS.primary,
     marginRight: wp("6%"),
     marginLeft: wp("3%"),
-    fontFamily:"Poppins-Regular",
-    fontSize:hp("2%"),
-    
-   },
+    fontFamily: "Poppins-Regular",
+    fontSize: hp("2%"),
 
-  
-   
+  },
 
-  });
-  
-  export default Catagories;
+
+
+
+});
+
+export default Catagories;

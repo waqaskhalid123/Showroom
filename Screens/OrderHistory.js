@@ -29,7 +29,7 @@ const OrderHistory= () => {
       ];
     
     return(
-     <View style={{flex:1, padding:12, backgroundColor:COLORS.white}}>
+     <View style={{flex:1, backgroundColor:COLORS.white}}>
         
         <FlatList
   data={DATA}
@@ -95,15 +95,16 @@ orderList:{
     paddingHorizontal:2, 
     borderRadius:10 ,
     overflow:'hidden',
-    borderRightWidth:1,
-    borderLeftWidth:1,
-    borderRightColor:"lightgrey",
-    borderLeftColor:"lightgrey",
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.5,
-    shadowRadius: 20,  
-    elevation: 2
+    marginTop:15,
+      //borderRightWidth:1,
+    //borderLeftWidth:1,
+    //borderRightColor:"lightgrey",
+    //borderLeftColor:"lightgrey",
+    margin:12,
+    shadowOpacity: 10,
+    shadowColor: "grey",
+    shadowRadius: 5,
+    elevation: 5
 }
 
 })

@@ -22,21 +22,22 @@ import { useNavigation } from "@react-navigation/native"
 
 const ListComp = ({
   name,
-  // price,
-  // imgUri,
+  price,
+  imgUri,
   // img,
-  item
+  //item
 }) => {
   const navigation = useNavigation();
   const [dataSource, setDataSource] = useState([]);
   return (
-
+  
     <TouchableOpacity
       activeOpacity={1}
       onPress={() => { navigation.navigate("ProductDetail") }}
       style={{ marginBottom: 15 }}
     >
       <View>
+      
         <View
           style={{
             // flex: 0.5,
@@ -46,15 +47,15 @@ const ListComp = ({
           }}>
           <Image
             style={styles.imageThumbnail}
-            source={{ uri: item.img }}
+            source={{ uri: imgUri}}
             resizeMode="stretch"
           />
           <View >
             <View style={styles.flatItemText}>
 
-              <View style={{ flex: 1, justifyContent: "center", paddingVertical: hp("1.5%") }} >
-                <Text style={{ color: COLORS.primary, fontFamily: "Poppins-Regular", fontSize: hp("2%") }}>{item.name}</Text>
-                <Text style={{ color: COLORS.primary, fontFamily: "Poppins-Bold", fontSize: hp("2%") }}>{item.price}</Text>
+              <View style={{ flex: 1, justifyContent: "center", paddingVertical: hp("1.5%") , backgroundColor:"red"}} >
+                <Text style={{ color: COLORS.primary, fontFamily: "Poppins-Regular", fontSize: hp("2%") }}>{name}</Text>
+                <Text style={{ color: COLORS.primary, fontFamily: "Poppins-Bold", fontSize: hp("2%") }}>{price}</Text>
               </View>
               <View style={{ flex: 1.5, justifyContent: "flex-end" }}>
 

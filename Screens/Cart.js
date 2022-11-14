@@ -192,7 +192,7 @@ const Cart=()=>{
            <Text style={{color:COLORS.secondary, left:wp("0%"), right: 0, 
            textAlign:"center",fontSize:hp("2.2%"),fontFamily:"Poppins-Regular"}}>S</Text>
            <Text style={{color:COLORS.secondary,  left:0, right: 0,
-           textAlign:"center",fontSize:hp("2.2%"),fontFamily:"Poppins-Regular", textDecorationLine: 'underline' }}>ize</Text>     
+           textAlign:"center",fontSize:hp("2.2%"),fontFamily:"Poppins-Regular"}}>ize</Text>     
         </View>
         <View style={{marginLeft:wp("2%")}}>
         <Text style={{color:COLORS.primary,  left:0, right: 0,
@@ -207,8 +207,8 @@ const Cart=()=>{
       <Myicons name='plus' size={18} color={COLORS.primary} onPress={()=>{Increment()}} />
       </View>   
     </View>
-   <View style={{flex:0.5,paddingVertical:10,padding:wp("3%"),alignItems:"flex-end",backgroundColor:"red" }}>
-   <Ionicons name='close'size={12} color={COLORS.white}  style={{backgroundColor:COLORS.redBtn, borderRadius:20/2,height:20,width:20,  marginBottom:wp("7%") , padding:4 }}/>
+   <View style={{flex:0.5,paddingVertical:10,padding:wp("3%"),alignItems:"flex-end" }}>
+   <Ionicons name='close'size={12} color={COLORS.white}  style={{backgroundColor:COLORS.redBtn, borderRadius:20/2,height:20,width:20,  marginBottom:wp("9%") , padding:4 }}/>
    <View style={{paddingTop:hp("3%")}}>
    <Text style={{flex:1,fontFamily:"Poppins-Bold", fontSize:hp("2.2%")}}>{item.price}</Text>
    </View>

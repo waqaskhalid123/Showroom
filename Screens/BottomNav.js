@@ -155,12 +155,17 @@ const BottomNav = () => {
                   //borderRadius: 68,
                   justifyContent: "flex-start",
                   alignItems: 'center',
-                  backgroundColor: "white",
+                 // backgroundColor: "white",
                   borderRadius: 40 / 2,
                   overflow: "hidden"
                 }}
               >
-                <BackArrow name="ios-logo-whatsapp" color={COLORS.greenbtn} size={36} onPress={() => { Linking.openURL('whatsapp://send?text=hello&phone=03445549030') }} />
+                <TouchableOpacity >
+                <View style={{width:36,height:36}} onPress={() => { Linking.openURL('whatsapp://send?text=hello&phone=03445549030') }}  >
+                  <Image  source={require("../assets/whatsapp.png")} style={{width:"100%",height:"100%"}} resizeMode="contain"/>
+                </View>
+                </TouchableOpacity>
+               
               </View>
             ),
 

@@ -68,36 +68,55 @@ const Sidebar = ({...props})=>{
       
        
 <View style={styles.draweritem}>
-<DrawerItem icon={ () => (<Myicons style={styles.iconItem} name='md-help-circle-outline' size={17} color={COLORS.white}  /> )} 
-      label={ () => (<Text style={styles.text}>FAQS</Text>)}
-       onPress={() => { navigation.navigate("Faqs") }}/>
-       </View>
-<View style={styles.draweritem}>
-<DrawerItem icon={ () => (<Myicons style={styles.iconItem} name='ios-information-circle-outline'
-              size={17}
-              color={COLORS.white}
-               /> )} 
-      label={ () => (<Text style={styles.text}>About Us</Text>)}
-       onPress={() => { navigation.navigate("AboutUS") }}/> 
-       </View>
-       
-<View style={styles.draweritem}>
-<DrawerItem icon={ () => ( <Myicons style={styles.iconItem}  name='ios-time-outline' size={17} color={COLORS.white}  />)} 
+  
+       <View style={styles.draweritem}>
+        <DrawerItem icon={ () => (<Myicons style={styles.iconItem}  name='ios-person-add-outline' size={17} color={COLORS.white} /> )} 
+      label={ () => (<Text style={styles.text}>Invite Friend</Text>)}
+       onPress={() => { onShare() }}/>  
+      </View>
+
+      <View style={styles.draweritem}>
+       <DrawerItem icon={ () => ( <Myicons style={styles.iconItem}  name='ios-time-outline' size={17} color={COLORS.white}  />)} 
       label={ () => (<Text style={styles.text}>Order history</Text>)}
        onPress={() => { navigation.navigate("Order History") }}/>
        </View>
-      
+
+       <View style={styles.draweritem}>
+        <DrawerItem icon={ () => (<Myicons style={styles.iconItem} name='ios-information-circle-outline'
+        size={17}
+        color={COLORS.white}
+        /> )} 
+      label={ () => (<Text style={styles.text}>About Us</Text>)}
+       onPress={() => { navigation.navigate("AboutUS") }}/> 
+       </View>
+
        <View style={styles.draweritem}>
        <DrawerItem icon={ () => (<BackArrow style={styles.iconItem}  name='security' size={17} color={COLORS.white} /> )} 
       label={ () => (<Text style={styles.text}>Privacy Policy</Text>)}
        onPress={() => { navigation.navigate("PrivacyPolicy") }}/> 
         </View>
-       
+
         <View style={styles.draweritem}>
-        <DrawerItem icon={ () => (<Myicons style={styles.iconItem}  name='ios-person-add-outline' size={17} color={COLORS.white} /> )} 
-      label={ () => (<Text style={styles.text}>Invite Friend</Text>)}
-       onPress={() => { onShare() }}/>  
-      </View>
+       <DrawerItem icon={ () => (<Myicons style={styles.iconItem}  name='md-help-circle-outline' size={17} color={COLORS.white} /> )} 
+      label={ () => (<Text style={styles.text}>FAQS</Text>)}
+       onPress={() => { navigation.navigate("Faqs")  }}/> 
+        </View>
+
+        <View style={styles.draweritem}>
+       <DrawerItem icon={ () => (<BackArrow  style={styles.iconItem}  name='login' size={17} color={COLORS.white} /> )} 
+      label={ () => (<Text style={styles.text}>Sign In / Register</Text>)}
+       onPress={() => { {}  }}/> 
+        </View>
+       
+
+      
+       </View>
+
+       
+
+      
+       
+        
        
        <View  style={{flex:1, paddingHorizontal:("20%"),marginBottom:("5%"),backgroundColor:"black", flexDirection:"row",justifyContent:"space-around",alignItems:"flex-end"}}>
        <View style={{width:"15%",height:"15%"}} >

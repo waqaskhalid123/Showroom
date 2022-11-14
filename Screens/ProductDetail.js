@@ -170,18 +170,16 @@ const ProductDetail = () => {
       
   } />*/}
               <>
-              <View style={{flex:1, marginTop:hp("3%")}}>
+              <View style={{flex:1, marginTop:hp("3%"),flexDirection: "row" ,justifyContent:"space-between"}}>
               <Text style={{ color: COLORS.primary, fontFamily: "Poppins-Bold", fontSize: hp("2.5%") }}>Blazer jacket 08</Text>
+              <Text style={{ color: COLORS.primary, fontFamily: "Poppins-Bold", fontSize: hp("2.5%") }}>$ 29.99</Text>
               </View>
-              <View style={{ flex: 1, flexDirection: "row" }}>
-                <View style={{ flex: 1, justifyContent: "center"}}>
-                 {/*} <Text style={{ color: COLORS.primary, fontFamily: "Poppins-Regular", fontSize: hp("2.5%") }}>Blazer jacket 08</Text>*/}
-                  <Text style={{ color: COLORS.primary, fontFamily: "Poppins-Bold", fontSize: hp("4%") }}>$ 29.99</Text>
-                </View>
+              <View style={{ flex: 1, flexDirection: "row",}}>
+               
 
-                <View style={{ flex: 1.5, marginTop:hp("0.5%"),justifyContent:"flex-start", alignItems:"flex-end" }}>
+                <View style={{ flex: 1, marginTop:hp("0.5%") }}>
 
-                  <View style={{ backgroundColor: COLORS.greenbtn, borderRadius: 5, width:wp("50%")}}>
+                  <View style={{ backgroundColor: COLORS.greenbtn, borderRadius: 5}}>
                     <TouchableOpacity onPress={() => { { } }}>
                       <View style={{ flexDirection: "row", justifyContent: "center", alignItems: "center" }}>
                         <Ionicons name='logo-whatsapp' size={20} color={COLORS.white} style={{ paddingVertical: 7, paddingRight: 8, marginLeft: -2 }} />
@@ -203,7 +201,7 @@ const ProductDetail = () => {
                     }}>S</Text>
                     <Text style={{
                       color: COLORS.primary, left: 0, right: 0,
-                      textAlign: "center", fontSize: hp("3%"), fontFamily: "Poppins-Regular", textDecorationLine: 'underline'
+                      textAlign: "center", fontSize: hp("3%"), fontFamily: "Poppins-Regular", 
                     }}>ize</Text>
                   </View>
                   {/*<View style={{borderWidth:1,paddingVertical:wp("0.5%"),marginRight:wp("5%"),borderRadius:5}}>
@@ -238,7 +236,7 @@ const ProductDetail = () => {
                     }}>Q</Text>
                     <Text style={{
                       color: COLORS.primary, left: wp("0.1%"), right: 0,
-                      textAlign: "center", fontSize: hp("3%"), fontFamily: "Poppins-Regular", textDecorationLine: 'underline'
+                      textAlign: "center", fontSize: hp("3%"), fontFamily: "Poppins-Regular",
                     }}>uantity</Text>
                   </View>
                   <View style={{ borderWidth: 1, marginRight: wp("17%"), borderRadius: 5, borderColor: COLORS.secondary, marginLeft: wp("10%") }}>
@@ -262,7 +260,7 @@ const ProductDetail = () => {
               }}>D</Text>
               <Text style={{
                 color: COLORS.primary, left: wp("0.1%"), right: 0,
-                textAlign: "center", fontSize: hp("3%"), fontFamily: "Poppins-Regular", textDecorationLine: 'underline'
+                textAlign: "center", fontSize: hp("3%"), fontFamily: "Poppins-Regular",
               }}>escription</Text>
             </View>
             <View style={{ marginLeft: hp("1.5%") }}>
@@ -285,7 +283,7 @@ const ProductDetail = () => {
               }}>P</Text>
               <Text style={{
                 color: COLORS.primary, left: wp("2.1%"), right: 0,
-                textAlign: "center", fontSize: hp("3%"), fontFamily: "Poppins-Regular", textDecorationLine: 'underline'
+                textAlign: "center", fontSize: hp("3%"), fontFamily: "Poppins-Regular", 
               }}>roducts</Text>
             </View>
             

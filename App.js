@@ -20,7 +20,7 @@ import {
 } from 'react-native';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
-import {NavigationContainer} from "@react-navigation/native"
+import { useNavigation, NavigationContainer } from '@react-navigation/native';
 import BackArrow from "react-native-vector-icons/Ionicons"
 import Home from './Screens/Home';
 import Catagories from './Screens/Catagories';
@@ -42,6 +42,7 @@ import Splash from './Screens/Splash';
 
 
 const App=()=>{
+ 
   const Stack = createNativeStackNavigator();
   return(
     <NavigationContainer >
@@ -129,7 +130,7 @@ const App=()=>{
    
     <Stack.Screen name="BottomNav" component={BottomNav} /> 
 
-    <Stack.Screen name="Cart" component={Cart} options={{headerShown:true,headerTitleStyle: {
+    <Stack.Screen name="cart" component={Cart} options={{headerShown:true,headerTitleStyle: {
         
         fontFamily:"Poppins-Regular",
         },
@@ -144,11 +145,15 @@ const App=()=>{
     <Stack.Screen name="ProductDetail" component={ProductDetail} options={{
       headerShown:true,
       headerTitleAlign:"center",
+      title:"Product Details",
       headerTitleStyle: {fontFamily:"Poppins-Regular"},
       headerTitleAlign:"center", 
       headerTitleStyle: {    
       fontFamily:"Poppins-Regular",
       },
+      headerRight: () => (
+        <BackArrow name="ios-cart-outline" size={25} onPress={() => {}} style={{ paddingRight: wp("2.5%")}} />
+      ),
       headerStyle: {               
       height:50
       },}} />
@@ -161,6 +166,9 @@ const App=()=>{
     headerTitleStyle: {    
     fontFamily:"Poppins-Regular",
     },
+    headerRight: () => (
+      <BackArrow name="options-outline" size={25} style={{ paddingRight: wp("2.5%"), }} />
+    ),
     headerStyle: {
                       
       height:50
